@@ -22,3 +22,14 @@ Após instalar as dependências, execute o servidor local com:
 ```
 python manage.py runserver
 ```
+Para criar a migração de uma determinada classe:
+
+```
+python manage.py makemigrations
+```
+
+Comando migrate precisa ser executado caso haja novas migrações e/ou quando o servidor for disponilizado em um novo computador:
+
+```
+python manage.py migrate
+```
