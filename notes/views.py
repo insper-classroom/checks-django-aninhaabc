@@ -5,10 +5,15 @@ from django.http import HttpResponse
 from .models import Note
 
 def index(request):
-    all_notes = Note.objects.all()
+    all_notes = Note.objects.all().order_by('created_at')
+    html_response = '<h1>Get-it</h1><ul>'
+
     for note in all_notes:
-        note.title
-    return HttpResponse("<h1>Olá mundo!</h1><p>Este é o app notes de <em>DevLife do Insper</em>.</p><h1>Get-it</h1><ul><li>receita de miojo</li><li>pao doce<li>sorvete com cristais de leite</li><li> iogurte natural</li>homer simpson</li></ul>")
+        html_response += f'<li>{note.title}</li>'
+
+    html_response += '</ul>'
+    
+    return HttpResponse(html_response)
 
 def credito(request):
     return HttpResponse("<h1>Créditos</h1><p>Sistema web desenvolvido por Ana Beatriz.</p>")
