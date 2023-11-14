@@ -1,11 +1,13 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
     <head>
         <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="{% static './notes/style/style.css' %}"/>
         <title>Get-it</title>
     </head>
 
-    <body>
+    <body class="bg-color">
         {% block content %} {% endblock %}
     </body>
 </html>
