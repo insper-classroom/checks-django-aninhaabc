@@ -7,8 +7,20 @@
 <ul>
     {% for note in notes %}
     <li>{{ note.title }}</li>
-    {% empty %}
-    <li>Nenhuma anotação por enquanto.</li>
+    <li>{{note.content}}</li>
+    <a href = '/anotacoes/{{note.id}}/apagar'>apagar</a>
+    <a href="/anotacoes/{{note.id}}">editar</a>
     {% endfor %}
 </ul>
+
+<form method="post" action="/">
+    {% csrf_token %}
+    <label for="titulo">Título</label>
+    <input id="titulo" type="text" name="titulo" />
+    <label for="detalhes">Detalhes</label>
+    <textarea id="detalhes" name="detalhes"></textarea>
+
+    <input type="submit" />
+</form>
+
 {% endblock %}
