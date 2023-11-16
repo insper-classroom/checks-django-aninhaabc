@@ -3,13 +3,15 @@ from django.shortcuts import render,redirect
 # Create your views here.
 from django.http import HttpResponse
 from .models import Note
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def index(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
     if request.method == 'POST':
         title = request.POST.get('titulo')
         content = request.POST.get('detalhes')
-
-        print(f'Titulo={title}\nConteudo={content}\n')
 
         n = Note(title=title,content=content)
         n.save()

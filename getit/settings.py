@@ -30,6 +30,10 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+#Password validation
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+
 INSTALLED_APPS = [
     'notes.apps.NotesConfig',
     'django.contrib.admin',

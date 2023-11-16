@@ -8,6 +8,15 @@
     </head>
 
     <body class="bg-color">
+        {% if user.is_authenticated %}
+        {{ user.first_name }}
+        {% endif %}
+        
+
         {% block content %} {% endblock %}
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Sair</button>
+        </form>
     </body>
 </html>
